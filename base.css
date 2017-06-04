@@ -34,9 +34,18 @@ p {
 
 #map {
     position: absolute;
-    top: 0;
+    top: 30px;
     bottom: 0;
     width: 100%;
+}
+
+#weightSelect {
+    width: 100px;
+}
+
+#weightSelectButton {
+    width: 50px;
+    height: 25px;
 }
 
 #selected,
