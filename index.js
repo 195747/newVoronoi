@@ -13,8 +13,6 @@ showHide = function (selector) {
 };
 
 
-
-
 //obsluga drag-n-drop?
 d3.json("geo.json", function (data) {
 	//console.log(data);
@@ -61,11 +59,6 @@ function drawEmpty(){
 
 
 function drawMap(){
-	/*if(map) map.remove();
-	L.mapbox.accessToken = 'pk.eyJ1IjoiemV0dGVyIiwiYSI6ImVvQ3FGVlEifQ.jGp_PWb6xineYqezpSd7wA';
-	map = L.mapbox.map('map', 'zetter.i73ka9hn').fitBounds([[59.355596 , -9.052734], [49.894634 , 3.515625]]);
-	latLng = L.latLng(51.753097715746094, 19.456121921539303);
-	map.setView(latLng, 16);*/
 	voronoiMap(map, $('#weightSelect option:selected').text());
 }
 
@@ -73,7 +66,6 @@ function drawMap(){
 voronoiMap = function (map, selectedWeight) {
 	console.log("poczatek voronoimap");
 
-	//$('#overlay').remove();
 
   var pointTypes = d3.map(),
 	points = [],
@@ -106,35 +98,6 @@ voronoiMap = function (map, selectedWeight) {
 	  .attr('href', point.url)
 	  .attr('target', '_blank')
   };
-
-  /*var drawPointTypeSelection = function () {
-	  console.log("drawpointtypeselection");
-	showHide('#selections');
-	labels = d3.select('#toggles').selectAll('input')
-	  .data(pointTypes.values())
-	  .enter().append("label");
-
-	labels.append("input")
-	  .attr('type', 'checkbox')
-	  .property('checked', function (d) {
-		return initialSelections === undefined || initialSelections.has(d.type)
-	  })
-	  .attr("value", function (d) {
-		return d.type;
-	  })
-	  .on("change", drawWithLoading);
-
-	labels.append("span")
-	  .attr('class', 'key')
-	  .style('background-color', function (d) {
-		return '#' + d.color;
-	  });
-
-	labels.append("span")
-	  .text(function (d) {
-		return d.type;
-	  });
-  };*/
 
   var clone = function(obj) {
 	  console.log("clone");
@@ -191,10 +154,8 @@ voronoiMap = function (map, selectedWeight) {
 	});
 
 	var c = collide(points2, .0005);
-	var q = gravity(0.0005);
 	for (var i=0; i < 100; i++) {
 	  points2.forEach(function(d) {
-		//q(d);
 		c(d);
 	  });
 	}
@@ -337,7 +298,6 @@ voronoiMap = function (map, selectedWeight) {
 
   showHide('#about');
 
-  //map.on('ready', function () {
 	  console.log("wczytanie");
 	d3.json("geo.json", function (data) {
 	  nodes = data.features;
@@ -345,13 +305,8 @@ voronoiMap = function (map, selectedWeight) {
 	  var idx = 1;
 	  data.features.forEach(function (feature) {
 		var radius = 10;
-		/*if(typeof (feature.properties.weight) !== "undefined") {
-		  radius = feature.properties.weight;
-		  console.log('test');
-		}*/
 
 		 if(typeof (feature.properties[selectedWeight]) !== "undefined") {
-		 //radius = feature.properties[selectedWeight];
 		 radius = recalcWeight($('#functionSelect option:selected').text(), feature.properties[selectedWeight]);
 		 console.log('test');
 		 }
@@ -366,8 +321,6 @@ voronoiMap = function (map, selectedWeight) {
 		});
 		idx++;
 	  });
-	  //nodesOverlay.addTo(map);
 	  map.addLayer(mapLayer);
 	});
-  //});
 }
