@@ -5,7 +5,8 @@
       "type": "Feature",
       "properties": {
         "weight": 0.005,
-        "testWeight": 0.0001
+        "testWeight": 0.0001,
+        "bigWeight": 1
       },
       "geometry": {
         "type": "Point",
@@ -19,7 +20,8 @@
       "type": "Feature",
       "properties": {
         "weight": 0.0001,
-        "testWeight": 0.005
+        "testWeight": 0.005,
+        "bigWeight": 1
       },
       "geometry": {
         "type": "Point",
@@ -33,7 +35,8 @@
       "type": "Feature",
       "properties": {
         "weight": 0.0001,
-        "testWeight": 0.0001
+        "testWeight": 0.0001,
+        "bigWeight": 1
       },
       "geometry": {
         "type": "Point",
@@ -47,7 +50,8 @@
       "type": "Feature",
       "properties": {
         "weight": 0.0001,
-        "testWeight": 0.003
+        "testWeight": 0.003,
+        "bigWeight": 1
       },
       "geometry": {
         "type": "Point",
@@ -61,7 +65,8 @@
       "type": "Feature",
       "properties": {
         "weight": 0.0001,
-        "testWeight": 0.0001
+        "testWeight": 0.0001,
+        "bigWeight": 1
       },
       "geometry": {
         "type": "Point",

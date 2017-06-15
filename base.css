@@ -33,10 +33,13 @@ p {
 }
 
 #map {
-    position: absolute;
-    top: 30px;
-    bottom: 0;
     width: 100%;
+    height: 500px;
+    float: left;
+}
+
+#dropDown {
+    float: left;
 }
 
 #weightSelect {

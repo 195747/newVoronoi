@@ -27,12 +27,45 @@ d3.json("geo.json", function (data) {
 	}
 })
 
-function testFun(){
-	if(map) map.remove();
+
+
+
+function recalcWeight(functionName, weightToRecalc){
+	var newWeight = 0;
+	//potrzebna rekalibracja wag
+	switch(functionName){
+		case "2x+1":
+			newWeight = 2*weightToRecalc + 0.0001;
+			break;
+		case "x^2":
+			newWeight = weightToRecalc*weightToRecalc;
+			break;
+		case "sqrt(x)":
+			newWeight = Math.sqrt(weightToRecalc);
+			break;
+		default:
+			newWeight = weightToRecalc;
+			break;
+	}
+	//wywolanie funkcji normalizujacej punkty?
+	return newWeight;
+}
+
+function drawEmpty(){
+    L.mapbox.accessToken = 'pk.eyJ1IjoiemV0dGVyIiwiYSI6ImVvQ3FGVlEifQ.jGp_PWb6xineYqezpSd7wA';
+    map = L.mapbox.map('map', 'zetter.i73ka9hn').fitBounds([[59.355596 , -9.052734], [49.894634 , 3.515625]]);
+    latLng = L.latLng(51.753097715746094, 19.456121921539303);
+    map.setView(latLng, 16);
+
+}
+
+
+function drawMap(){
+	/*if(map) map.remove();
 	L.mapbox.accessToken = 'pk.eyJ1IjoiemV0dGVyIiwiYSI6ImVvQ3FGVlEifQ.jGp_PWb6xineYqezpSd7wA';
 	map = L.mapbox.map('map', 'zetter.i73ka9hn').fitBounds([[59.355596 , -9.052734], [49.894634 , 3.515625]]);
 	latLng = L.latLng(51.753097715746094, 19.456121921539303);
-	map.setView(latLng, 16);
+	map.setView(latLng, 16);*/
 	voronoiMap(map, $('#weightSelect option:selected').text());
 }
 
@@ -40,7 +73,7 @@ function testFun(){
 voronoiMap = function (map, selectedWeight) {
 	console.log("poczatek voronoimap");
 
-	$('#overlay').remove();
+	//$('#overlay').remove();
 
   var pointTypes = d3.map(),
 	points = [],
@@ -173,7 +206,7 @@ voronoiMap = function (map, selectedWeight) {
 	  console.log("drawwithloading");
 	d3.select('#loading').classed('visible', true);
 	if (e && e.type == 'viewreset') {
-	  d3.select('#overlay').remove();
+	  d3.select('#voronoi').remove();
 	}
 	setTimeout(function () {
 	  draw();
@@ -183,7 +216,7 @@ voronoiMap = function (map, selectedWeight) {
 
   var draw = function () {
 	  console.log("draw");
-	d3.select('#overlay').remove();
+	d3.select('#voronoi').remove();
 
 	var bounds = map.getBounds(),
 	  topLeft = map.latLngToLayerPoint(bounds.getNorthWest()),
@@ -239,7 +272,7 @@ voronoiMap = function (map, selectedWeight) {
 	});
 
 	var svg = d3.select(map.getPanes().overlayPane).append("svg")
-	  .attr('id', 'overlay')
+	  .attr('id', 'voronoi')
 	  .attr("class", "leaflet-zoom-hide")
 	  .style("width", map.getSize().x + 'px')
 	  .style("height", map.getSize().y + 'px')
@@ -304,7 +337,7 @@ voronoiMap = function (map, selectedWeight) {
 
   showHide('#about');
 
-  map.on('ready', function () {
+  //map.on('ready', function () {
 	  console.log("wczytanie");
 	d3.json("geo.json", function (data) {
 	  nodes = data.features;
@@ -318,7 +351,8 @@ voronoiMap = function (map, selectedWeight) {
 		}*/
 
 		 if(typeof (feature.properties[selectedWeight]) !== "undefined") {
-		 radius = feature.properties[selectedWeight];
+		 //radius = feature.properties[selectedWeight];
+		 radius = recalcWeight($('#functionSelect option:selected').text(), feature.properties[selectedWeight]);
 		 console.log('test');
 		 }
 
@@ -335,5 +369,5 @@ voronoiMap = function (map, selectedWeight) {
 	  //nodesOverlay.addTo(map);
 	  map.addLayer(mapLayer);
 	});
-  });
+  //});
 }
