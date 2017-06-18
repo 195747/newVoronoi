@@ -4,75 +4,65 @@
     {
       "type": "Feature",
       "properties": {
-        "weight": 0.005,
-        "testWeight": 0.0001,
-        "bigWeight": 1
+        "weight": 100
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          19.456121921539303,
-          51.753097715746094
+          9.7119140625,
+          52.05249047600099
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "weight": 0.0001,
-        "testWeight": 0.005,
-        "bigWeight": 0.5
+        "weight": 100
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          19.45425510406494,
-          51.75292503116529
+          19.6435546875,
+          52.696361078274485
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "weight": 0.0001,
-        "testWeight": 0.0001,
-        "bigWeight": 1
+        "weight": 100
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          19.456690549850464,
-          51.75151032108448
+          10.458984375,
+          48.31242790407178
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "weight": 0.0001,
-        "testWeight": 0.003,
-        "bigWeight": 1
+        "weight": 100
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          19.45349335670471,
-          51.75179592340317
+          19.6435546875,
+          47.60616304386874
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "weight": 0.0001,
-        "testWeight": 0.0001,
-        "bigWeight": 1
+        "weight": 100
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          19.450886249542236,
-          51.7528386886273
+          12.392578125,
+          59.44507509904714
         ]
       }
     }
