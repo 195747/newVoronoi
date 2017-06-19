@@ -12,7 +12,6 @@ showHide = function (selector) {
   });
 };
 
-
 //obsluga drag-n-drop?
 d3.json("map.json", function (data) {
   //console.log(data);
@@ -22,8 +21,9 @@ d3.json("map.json", function (data) {
     $("#weightSelect").append($('<option>', {value: prop})
       .text(prop));
   }
-})
+});
 
+var selectedFuncToDrawPoints = null;
 
 function recalcWeight(functionName, weightToRecalc) {
   var newWeight = 0;
@@ -58,6 +58,8 @@ function drawEmpty() {
 function drawMap() {
   var selectedWeight = $('#weightSelect option:selected').text();
   var selectedFunc = $('#functionSelect option:selected').text();
+
+  selectedFuncToDrawPoints = selectedFunc;
 
   var funcs = {};
   funcs["2x+1"] = function(weight) { return 2 * weight + 1; };
@@ -285,6 +287,17 @@ voronoiMap = function (map, selectedWeight, weightFunction) {
 
     var g2 = svg.append("g")
       .attr("transform", "translate(" + (-topLeft.x) + "," + (-topLeft.y) + ")");
+
+    if(selectedFuncToDrawPoints === "none") {
+      svgPoints.append("circle")
+        .attr("transform", function (d) {
+          return "translate(" + d.x + "," + d.y + ")";
+        })
+        .style('fill', function (d) {
+          return '#FF0000'
+        })
+        .attr("r", 2);
+    }
 
     var svgOriginalPoints = g2.attr("class", "points")
       .selectAll("g")
