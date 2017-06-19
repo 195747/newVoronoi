@@ -1,0 +1,81 @@
+{
+	"type": "FeatureCollection",
+	"features": [{
+		"type": "Feature",
+		"properties": {
+			"ilosc_mieszkancow": 10000,
+			"szacowany_dochod": 489500,
+			"dochod/mieszkanca": 48.95
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [19.42108154296875,
+			51.80131727336071]
+		}
+	},
+	{
+		"type": "Feature",
+		"properties": {
+			"ilosc_mieszkancow": 20000,
+			"szacowany_dochod": 1733400,
+			"dochod/mieszkanca": 86.67
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [19.44395542144775,
+			51.77916551077178]
+		}
+	},
+	{
+		"type": "Feature",
+		"properties": {
+			"ilosc_mieszkancow": 7000,
+			"szacowany_dochod": 265930,
+			"dochod/mieszkanca": 37.99
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [19.469125270843506,
+			51.79886240140497]
+		}
+	},
+	{
+		"type": "Feature",
+		"properties": {
+			"ilosc_mieszkancow": 6000,
+			"szacowany_dochod": 270060,
+			"dochod/mieszkanca": 45.01
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [19.448375701904297,
+			51.749723605126164]
+		}
+	},
+	{
+		"type": "Feature",
+		"properties": {
+			"ilosc_mieszkancow": 17000,
+			"szacowany_dochod": 1619590,
+			"dochod/mieszkanca": 95.27
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [19.465198516845703,
+			51.758968598640465]
+		}
+	},
+	{
+		"type": "Feature",
+		"properties": {
+			"ilosc_mieszkancow": 11000,
+			"szacowany_dochod": 1208350,
+			"dochod/mieszkanca": 109.85
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [19.495325088500977,
+			51.765396472773624]
+		}
+	}]
+}

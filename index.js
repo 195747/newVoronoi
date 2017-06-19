@@ -14,7 +14,7 @@ showHide = function (selector) {
 
 
 //obsluga drag-n-drop?
-d3.json("geo.json", function (data) {
+d3.json("map.json", function (data) {
   //console.log(data);
   for (var prop in data.features[0].properties) {
     console.log(prop);
@@ -50,7 +50,7 @@ function drawEmpty() {
   L.mapbox.accessToken = 'pk.eyJ1IjoiemV0dGVyIiwiYSI6ImVvQ3FGVlEifQ.jGp_PWb6xineYqezpSd7wA';
   map = L.mapbox.map('map', 'zetter.i73ka9hn').fitBounds([[59.355596, -9.052734], [49.894634, 3.515625]]);
   latLng = L.latLng(51.753097715746094, 19.456121921539303);
-  map.setView(latLng, 16);
+  map.setView(latLng, 13);
 
 }
 
@@ -62,7 +62,8 @@ function drawMap() {
   var funcs = {};
   funcs["2x+1"] = function(weight) { return 2 * weight + 1; };
   funcs["x^2"] = function(weight) { return weight*weight; };
-  funcs["none"] = function(weight) { return weight; };
+  funcs["none"] = function(weight) { return 0; };
+  funcs["weight"] = function(weight) { return weight; };
 
   var weightFunction = funcs[selectedFunc];
   if (selectedFunc === "custom") {
@@ -177,7 +178,7 @@ voronoiMap = function (map, selectedWeight, weightFunction) {
   var drawWithLoading = function (e) {
     console.log("drawwithloading");
     d3.select('#loading').classed('visible', true);
-    if (e && e.type == 'viewreset') {
+    if (e && e.type === 'viewreset') {
       d3.select('#voronoi').remove();
     }
     setTimeout(function () {
@@ -185,6 +186,7 @@ voronoiMap = function (map, selectedWeight, weightFunction) {
       d3.select('#loading').classed('visible', false);
     }, 0);
   };
+
 
   var draw = function () {
     console.log("draw");
@@ -272,14 +274,14 @@ voronoiMap = function (map, selectedWeight, weightFunction) {
         return lastSelectedPoint == d
       });
 
-    svgPoints.append("circle")
+    /*svgPoints.append("circle")
       .attr("transform", function (d) {
         return "translate(" + d.x + "," + d.y + ")";
       })
       .style('fill', function (d) {
         return '#' + d.color
       })
-      .attr("r", 2);
+      .attr("r", 3);*/
 
     var g2 = svg.append("g")
       .attr("transform", "translate(" + (-topLeft.x) + "," + (-topLeft.y) + ")");
@@ -339,7 +341,7 @@ voronoiMap = function (map, selectedWeight, weightFunction) {
   showHide('#about');
 
   console.log("wczytanie");
-  d3.json("geo.json", function (data) {
+  d3.json("map.json", function (data) {
     nodes = data.features;
 
     var idx = 1;

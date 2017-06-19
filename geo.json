@@ -21,7 +21,7 @@
       "properties": {
         "weight": 0.0001,
         "testWeight": 0.005,
-        "bigWeight": 0.5
+        "bigWeight": 576
       },
       "geometry": {
         "type": "Point",
@@ -36,7 +36,7 @@
       "properties": {
         "weight": 0.0001,
         "testWeight": 0.0001,
-        "bigWeight": 1
+        "bigWeight": 100
       },
       "geometry": {
         "type": "Point",
@@ -51,7 +51,7 @@
       "properties": {
         "weight": 0.0001,
         "testWeight": 0.003,
-        "bigWeight": 1
+        "bigWeight": 100
       },
       "geometry": {
         "type": "Point",
@@ -66,7 +66,7 @@
       "properties": {
         "weight": 0.0001,
         "testWeight": 0.0001,
-        "bigWeight": 1
+        "bigWeight": 1000
       },
       "geometry": {
         "type": "Point",
